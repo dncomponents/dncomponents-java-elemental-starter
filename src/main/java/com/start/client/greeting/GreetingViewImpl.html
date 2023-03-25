@@ -1,0 +1,24 @@
+<div ui-field="root" class="w-50">
+    <h2>
+        Greeting
+    </h2>
+    <p>Demonstrates MVP pattern </p>
+    <div class="form-label-group">
+        <input ui-field="nameField" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        <small class="form-text text-muted">Should be 4 characters long!</small>
+    </div>
+    <button ui-field="button" class="btn btn-primary">
+        Send Name
+    </button>
+    <div class="text-center mb-4 mt-4">
+        <h1 ui-field="nameLabel"></h1>
+    </div>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+    <div class="text-center mb-4 mt-4">
+        <span class="error" ui-field="errorLabel"></span>
+    </div>
+</div>
