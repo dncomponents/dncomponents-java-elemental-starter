@@ -1,5 +1,5 @@
 # dncomponents-java-elemental-starter
-Starter project for development UI interface with HTML binder using elemental2 elements.<br>
+Starter project for development User interface with HTML binder using elemental2 elements.<br>
 It demonstrates how to create your own components and
 use it in html as any other elements.
 This is basic project that only use core and mvp modules witth elemental2. If you want to use full dncomponents check [starter project with dncomponents](https://github.com/dncomponents/dncomponents-java-starter-bs).
