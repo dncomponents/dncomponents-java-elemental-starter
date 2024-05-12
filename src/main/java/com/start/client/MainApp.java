@@ -24,23 +24,15 @@ import com.dncomponents.client.views.appview.AcceptsOneElement;
 import com.dncomponents.client.views.appview.PlaceManager;
 import com.start.client.greeting.GreetingPlace;
 import com.start.client.home.HomePlace;
-import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLElement;
 import elemental2.dom.Node;
 
-import static com.dncomponents.client.dom.handlers.Handlers.addClickHandler;
-
 public class MainApp implements AcceptsOneElement {
 
+    HtmlBinder binder = HtmlBinder.create(MainApp.class, this);
     @UiField
     HTMLElement contentWrapper;
-
     PlaceManager placeManager = new PlaceManager(this);
-    HtmlBinder binder = HtmlBinder.get(MainApp.class, this);
-    @UiField
-    HTMLButtonElement greetings;
-    @UiField
-    HTMLButtonElement home;
 
     public MainApp() {
         binder.bind();
@@ -50,9 +42,7 @@ public class MainApp implements AcceptsOneElement {
     public void init() {
         placeManager.register(HomePlace.HomePlaceRegister.instance);
         placeManager.register(GreetingPlace.GreetingPlaceRegister.instance);
-        placeManager.setHomePlace(HomePlace.class);
-        addClickHandler(greetings, e -> placeManager.goTo(new GreetingPlace()));
-        addClickHandler(home, e -> placeManager.goTo(new HomePlace()));
+        placeManager.setHomePlace(GreetingPlace.class);
         History.fireCurrentHistoryState();
     }
 
@@ -61,8 +51,8 @@ public class MainApp implements AcceptsOneElement {
         contentWrapper.innerHTML = "";
         contentWrapper.appendChild(element.asElement());
     }
-
     public Node asElement() {
-        return binder.getTemplate().getCloned();
+        return binder.asNode();
     }
+
 }

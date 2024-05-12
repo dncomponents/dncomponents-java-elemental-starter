@@ -34,7 +34,7 @@ public class HomeViewImpl implements HomeView {
     HomeActivity presenter;
 
     {
-        HtmlBinder.get(HomeViewImpl.class, this).bind();
+        HtmlBinder.create(HomeViewImpl.class, this).bind();
     }
 
     public HomeViewImpl() {

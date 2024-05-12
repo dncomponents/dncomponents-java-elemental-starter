@@ -26,7 +26,7 @@ public interface GreetingView extends IsElement, HasPresenter<GreetingActivity> 
         void onNameEntered(String name);
     }
 
-    void setName(String name);
+    void sayHi();
 
     void setError(String error);
 }

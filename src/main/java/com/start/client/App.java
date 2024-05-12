@@ -17,24 +17,24 @@
 package com.start.client;
 
 import com.dncomponents.client.components.core.AppTemplates;
-import com.dncomponents.client.components.core.HtmlParserService;
+import com.dncomponents.client.components.core.HtmlBinder;
 import com.dncomponents.client.components.core.TemplateParser;
 import com.dncomponents.client.dom.History;
 import com.google.gwt.core.client.EntryPoint;
-import com.start.client.components.FirstCustomComponent;
-import com.start.client.components.SecondCustomComponent;
+import com.start.client.components.HelloComponent;
 import elemental2.dom.DomGlobal;
 
 public class App implements EntryPoint {
+    HelloComponent component;
+
     @Override
     public void onModuleLoad() {
-        TemplateParser.setDebug(true);
-        HtmlParserService.registerComponent(new SecondCustomComponent.SecondCustomComponentParser());
-        HtmlParserService.registerComponent(FirstCustomComponent.FirstCustomComponentParser.getInstance());
         AppTemplates.register();
+        TemplateParser.setDebug(true);
         //java 11
         var mainApp = new MainApp();
         DomGlobal.document.body.appendChild(mainApp.asElement());
+//        HtmlBinder.cssDevMode();
         History.fireCurrentHistoryState();
     }
 }

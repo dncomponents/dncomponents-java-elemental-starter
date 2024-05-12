@@ -16,69 +16,65 @@
 
 package com.start.client.greeting;
 
-import com.dncomponents.UiField;
+import com.dncomponents.Template;
 import com.dncomponents.client.components.core.HtmlBinder;
 import com.dncomponents.client.views.appview.AbstractView;
-import elemental2.dom.HTMLButtonElement;
 import elemental2.dom.HTMLElement;
-import elemental2.dom.HTMLHeadingElement;
-import elemental2.dom.HTMLInputElement;
 
-import static com.dncomponents.client.dom.handlers.Handlers.*;
-
+@Template
 public class GreetingViewImpl extends AbstractView<GreetingActivity> implements GreetingView {
+    HtmlBinder binder = HtmlBinder.create(GreetingViewImpl.class, this);
     private static GreetingViewImpl instance;
+    String name = "";
+    String error = "";
 
-    @UiField
-    HTMLElement root;
-    @UiField
-    public HTMLHeadingElement nameLabel;
-
-    @UiField
-    public HTMLInputElement nameField;
-    @UiField
-    public HTMLElement errorLabel;
-
-    HtmlBinder binder = HtmlBinder.get(GreetingViewImpl.class, this);
-    @UiField
-    HTMLButtonElement button;
 
     private GreetingViewImpl() {
-        binder.bind();
-        init();
+        binder.bindAndUpdateUi();
     }
 
-    private void init() {
-        addClickHandler(button, e -> onNameEntered());
-        addChangeHandler(nameField, e -> onNameEntered());
-        addBlurHandler(nameField, e -> {});
-    }
-
-    private void onNameEntered() {
-        presenter.onNameEntered(nameField.value);
+    void onNameEntered() {
+        presenter.onNameEntered(name);
     }
 
     @Override
-    public HTMLElement asElement() {
-        return root;
-    }
-
-    @Override
-    public void setName(String name) {
-        nameLabel.textContent = name;
+    public void sayHi() {
+        error = null;
+        binder.updateUi();
     }
 
     @Override
     public void setError(String error) {
-        if (!error.isEmpty()) {
-            nameField.focus();
+          this.error = error;
+        binder.updateUi();
+    }
+
+    boolean isValid() {
+        return !(name == null || name.isEmpty() || name.length() < 4);
+    }
+
+    String getValidationMessage() {
+        if (isValid()) {
+            return "Should be 4 characters long!";
+        } else {
+            return "Looks good";
         }
-        errorLabel.textContent = error;
+    }
+    String getValidationColor(){
+        if (isValid()) {
+            return "greenyellow !important";
+        } else {
+            return "red !important";
+        }
+    }
+
+    @Override
+    public HTMLElement asElement() {
+        return binder.getRoot();
     }
 
     public static GreetingViewImpl getInstance() {
         if (instance == null) instance = new GreetingViewImpl();
         return instance;
     }
-
 }

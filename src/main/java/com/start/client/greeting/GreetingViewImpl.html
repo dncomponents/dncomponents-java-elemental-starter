@@ -2,16 +2,17 @@
     <h2>
         Greeting
     </h2>
-    <p>Demonstrates MVP pattern </p>
+    <p>Demonstrates MVP pattern and reactivity</p>
     <div class="form-label-group">
-        <input ui-field="nameField" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-        <small class="form-text text-muted">Should be 4 characters long!</small>
+        <input dn-model="name" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        <small class="form-text text-muted">{{getValidationMessage()}}</small>
     </div>
-    <button ui-field="button" class="btn btn-primary">
+    <button dn-on-click="onNameEntered()" class="btn btn-primary">
         Send Name
     </button>
     <div class="text-center mb-4 mt-4">
-        <h1 ui-field="nameLabel"></h1>
+        <h1 dn-if="error==null">Hello</h1>
+        <h1>{{name}}</h1>
     </div>
     <style>
         .error {
@@ -19,6 +20,7 @@
         }
     </style>
     <div class="text-center mb-4 mt-4">
-        <span class="error" ui-field="errorLabel"></span>
+    <span  dn-if="error!=null" class="error">{{error}}</span>
     </div>
+    <hello-component></hello-component>
 </div>

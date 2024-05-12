@@ -29,8 +29,7 @@ public class GreetingActivity extends AbstractActivity<GreetingView, GreetingPla
         if (name == null || name.isEmpty() || name.length() < 4)
             view.setError("Name must be at least 4 characters long!");
         else {
-            view.setError("");
-            view.setName("Hello " + name + "!");
+            view.sayHi();
         }
     }
 }

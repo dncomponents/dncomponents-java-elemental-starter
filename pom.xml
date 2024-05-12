@@ -19,8 +19,9 @@
         <!-- dependencies -->
         <dncomponents.version>1.0-SNAPSHOT</dncomponents.version>
         <gwt.version>2.10.0</gwt.version>
-        <net.ltgt.gwt.version>1.0.1</net.ltgt.gwt.version>
-        <elemental.version>1.1.0</elemental.version>
+        <net.ltgt.gwt.version>1.1.0</net.ltgt.gwt.version>
+        <elemental.version>1.2.1</elemental.version>
+
     </properties>
 
     <dependencies>
@@ -95,6 +96,8 @@
                     <target>11</target>
                     <compilerArgs>
                         <arg>-Aregister=AppTemplates</arg>
+                        <arg>-AcssDir=${project.basedir}/src/main/java/com/start/public</arg>
+                        <arg>-Asrc=${project.build.sourceDirectory}</arg>
                     </compilerArgs>
                     <annotationProcessors>
                         <annotationProcessor>com.dncomponents.TemplateProcessor</annotationProcessor>

@@ -1,7 +1,7 @@
 <div>
     <div style="text-align: center">
-        <button ui-field="home" class="btn btn-primary">Home</button>
-        <button ui-field="greetings" class="btn btn-secondary">Greetings</button>
+        <button dn-on-click="placeManager.goTo(new com.start.client.home.HomePlace())" class="btn btn-primary">Home</button>
+        <button dn-on-click="placeManager.goTo(new com.start.client.greeting.GreetingPlace())" class="btn btn-secondary">Greetings</button>
     </div>
     <main ui-field="contentWrapper" class="col-12 col-md-9 col-xl-10 p-xl-5">
     </main>

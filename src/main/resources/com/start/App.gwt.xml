@@ -5,6 +5,7 @@
     <inherits name="elemental2.dom.Dom"/>
     <inherits name="com.dncomponents.Core"/>
     <source path="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"></source>
+    <source path="app.css"></source>
     <source path="client"/>
     <public path="public"/>
     <entry-point class="com.start.client.App"/>
